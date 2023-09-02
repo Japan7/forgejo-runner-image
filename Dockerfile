@@ -1,14 +1,10 @@
 ARG BASE_TAG=act-latest
 FROM catthehacker/ubuntu:${BASE_TAG}
 
-# pyenv
+# python
 ARG PYTHON_VERSION=3.11
-ENV PYENV_ROOT="/pyenv"
-RUN curl https://pyenv.run | bash && \
-    echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-ENV PATH="$PYENV_ROOT/bin:$PATH"
-RUN pyenv install ${PYTHON_VERSION} && \
-    pyenv global ${PYTHON_VERSION}
+COPY python.sh .
+RUN ./python.sh && rm python.sh
 
 # poetry
 ENV POETRY_HOME="/poetry"
