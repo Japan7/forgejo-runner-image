@@ -19,8 +19,8 @@ ARCHIVE_URL=$(
 )
 
 wget $ARCHIVE_URL -O python.tar.gz
-mkdir -p python
-tar xvzf python.tar.gz -C python
-(cd python/ && bash setup.sh)
+mkdir -p /python
+tar xvzf python.tar.gz -C /python
+(cd /python && bash setup.sh)
 
-rm -rf python.tar.gz python
+rm -rf python.tar.gz /python/*.tgz

@@ -5,6 +5,7 @@ FROM catthehacker/ubuntu:${BASE_TAG}
 ARG PYTHON_VERSION=3.11
 COPY python.sh .
 RUN ./python.sh && rm python.sh
+ENV PATH="/python/bin:$PATH"
 
 # poetry
 ENV POETRY_HOME="/poetry"
