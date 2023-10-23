@@ -26,7 +26,10 @@ jobs:
         include:
           - base-tag: act-latest
             python-version: 3.11
-            output-tag: latest
+            output-tag: 3.11
+          - base-tag: act-latest
+            python-version: 3.12
+            output-tag: 3.12
 
     runs-on: ubuntu-latest
     permissions:
