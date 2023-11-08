@@ -15,3 +15,6 @@ ENV PATH="$POETRY_HOME/bin:$PATH"
 # yq
 RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && \
     chmod +x /usr/bin/yq
+
+# rclone
+RUN curl https://rclone.org/install.sh | bash
