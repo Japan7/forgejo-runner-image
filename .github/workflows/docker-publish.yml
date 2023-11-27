@@ -26,10 +26,13 @@ jobs:
         include:
           - base-tag: act-latest
             python-version: 3.11
-            output-tag: 3.11
+            output-tags: |
+              type=raw,value=3.11
           - base-tag: act-latest
             python-version: 3.12
-            output-tag: 3.12
+            output-tags: |
+              type=raw,value=3.12
+              type=raw,value=latest
 
     runs-on: ubuntu-latest
     permissions:
@@ -69,8 +72,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            ${{ matrix.output-tag }}
+          tags: ${{ matrix.output-tags }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
