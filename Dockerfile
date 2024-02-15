@@ -22,7 +22,7 @@ RUN curl https://rclone.org/install.sh | bash
 
 # hugo
 # renovate: datasource=github-tags depName=gohugoio/hugo versioning=semver-coerced
-ARG HUGO_VERSION=0.120.3
+ARG HUGO_VERSION=v0.122.0
 RUN wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz && \
     tar -xzf hugo_${HUGO_VERSION}_linux-amd64.tar.gz && \
     mv hugo /usr/bin/hugo && \
