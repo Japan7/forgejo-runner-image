@@ -3,7 +3,7 @@ FROM catthehacker/ubuntu:${BASE_TAG}
 
 # python
 # renovate: datasource=docker depName=python
-ARG PYTHON_VERSION=3.11
+ARG PYTHON_VERSION=3.12
 COPY python.sh .
 RUN ./python.sh && rm python.sh
 ENV PATH="/python/bin:$PATH"
