@@ -4,6 +4,17 @@
     "github>Japan7/renovate-config",
     "github>Japan7/renovate-config:python"
   ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [".*\\.ya?ml$"],
+      "matchStrings": [
+        "(?<currentValue>\\S+) # renovate: python(?: extractVersion=(?<extractVersion>\\S+))?"
+      ],
+      "depNameTemplate": "python",
+      "datasourceTemplate": "custom.setup-python"
+    }
+  ],
   "customDatasources": {
     "setup-python": {
       "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json",

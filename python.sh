@@ -1,20 +1,17 @@
 #!/bin/sh -xe
-
 MANIFEST_URL=https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json
 
-LATEST_MINOR=$(
-    curl $MANIFEST_URL |
-    jq -r .[].version |
-    grep $PYTHON_VERSION |
-    head -n 1   # assuming that the latest minor version is the first one
-)
+ARCH=$TARGETARCH
+if [ "$ARCH" = "amd64" ]; then
+    ARCH=x64
+fi
 
 ARCHIVE_URL=$(
     curl $MANIFEST_URL |
     jq -r ".[]
-        | select(.version == \"${LATEST_MINOR}\")
+        | select(.version == \"${PYTHON_VERSION}\")
         | .files[]
-        | select(.arch == \"x64\" and .platform_version == \"${LSB_RELEASE}\")
+        | select(.arch == \"${ARCH}\" and .platform_version == \"${LSB_RELEASE}\")
         | .download_url"
 )
 
