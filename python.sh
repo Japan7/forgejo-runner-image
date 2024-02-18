@@ -1,7 +1,7 @@
 #!/bin/sh -xe
 VERSION=${PYTHON_RUNTIME_VERSION}+${PYTHON_BUILD_VERSION}
 if [ "$TARGETARCH" = "amd64" ]; then
-    TARGET=x86_64-unknown-linux-gnu
+    TARGET=x86_64_v3-unknown-linux-gnu
     CONFIG=pgo+lto
 elif [ "$TARGETARCH" = "arm64" ]; then
     TARGET=aarch64-unknown-linux-gnu

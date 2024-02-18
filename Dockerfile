@@ -4,10 +4,10 @@ FROM catthehacker/ubuntu:${BASE_TAG}
 ARG TARGETARCH
 
 # python
-# renovate: datasource=custom.indygreg-python depName=python
-ARG PYTHON_RUNTIME_VERSION=3.12.1
 # renovate: datasource=github-releases depName=indygreg/python-build-standalone
 ARG PYTHON_BUILD_VERSION=20240107
+# renovate: datasource=custom.indygreg-python depName=python
+ARG PYTHON_RUNTIME_VERSION=3.12.1
 COPY python.sh .
 RUN ./python.sh && rm python.sh
 ENV PATH="/python/bin:$PATH"
