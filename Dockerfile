@@ -4,8 +4,10 @@ FROM catthehacker/ubuntu:${BASE_TAG}
 ARG TARGETARCH
 
 # python
-# renovate: datasource=custom.setup-python depName=python
-ARG PYTHON_VERSION=3.12.2
+# renovate: datasource=custom.indygreg-python depName=python
+ARG PYTHON_RUNTIME_VERSION=3.12.1
+# renovate: datasource=github-releases depName=indygreg/python-build-standalone
+ARG PYTHON_BUILD_VERSION=20240107
 COPY python.sh .
 RUN ./python.sh && rm python.sh
 ENV PATH="/python/bin:$PATH"
@@ -13,9 +15,7 @@ ENV PATH="/python/bin:$PATH"
 # poetry
 # renovate: datasource=github-releases depName=python-poetry/poetry
 ARG POETRY_VERSION=1.7.1
-ENV POETRY_HOME="/poetry"
-RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="$POETRY_HOME/bin:$PATH"
+RUN pip3 install --no-cache-dir "poetry==${POETRY_VERSION}"
 
 # yq
 # renovate: datasource=github-releases depName=mikefarah/yq

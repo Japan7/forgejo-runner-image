@@ -21,17 +21,17 @@
       "customType": "regex",
       "fileMatch": [".*\\.ya?ml$"],
       "matchStrings": [
-        "(?<currentValue>\\S+) # renovate: python(?: extractVersion=(?<extractVersion>\\S+))?"
+        "(?<currentValue>\\S+) # renovate: indygreg-python(?: extractVersion=(?<extractVersion>\\S+))?"
       ],
       "depNameTemplate": "python",
-      "datasourceTemplate": "custom.setup-python"
+      "datasourceTemplate": "custom.indygreg-python"
     }
   ],
   "customDatasources": {
-    "setup-python": {
-      "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json",
+    "indygreg-python": {
+      "defaultRegistryUrlTemplate": "https://api.github.com/repos/indygreg/python-build-standalone/releases/latest",
       "transformTemplates": [
-        "{\"releases\": $map($, function($v) { { \"version\": $v.version } }) }"
+        "($matcher := /[^-]+-([^+]+)\\+([^-]+)/; {\"releases\": $map($.assets, function($v) { ($g := $matcher($v.name).groups; {\"version\": $g[0], \"digest\": $g[1]}) })})"
       ]
     }
   }
