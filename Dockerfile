@@ -2,12 +2,11 @@ ARG BASE_TAG=act-latest@sha256:efce7c01d75493a457c82c7394d2707119e30becb706ec186
 FROM catthehacker/ubuntu:${BASE_TAG}
 
 ARG TARGETARCH
+ARG PYTHON_RUNTIME_MINOR
 
 # python
 # renovate: datasource=github-releases depName=indygreg/python-build-standalone
 ARG PYTHON_BUILD_VERSION=20240107
-# renovate: datasource=custom.indygreg-python depName=python
-ARG PYTHON_RUNTIME_VERSION=3.12.1
 COPY python.sh .
 RUN ./python.sh && rm python.sh
 ENV PATH="/python/bin:$PATH"

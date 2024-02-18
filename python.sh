@@ -1,5 +1,6 @@
 #!/bin/sh -xe
-VERSION=${PYTHON_RUNTIME_VERSION}+${PYTHON_BUILD_VERSION}
+API_URL=https://api.github.com/repos/indygreg/python-build-standalone/releases/tags/${PYTHON_BUILD_VERSION}
+
 if [ "$TARGETARCH" = "amd64" ]; then
     TARGET=x86_64_v3-unknown-linux-gnu
     CONFIG=pgo+lto
@@ -9,9 +10,15 @@ elif [ "$TARGETARCH" = "arm64" ]; then
 fi
 FLAVOR=full
 
-DISTRIB=cpython-${VERSION}-${TARGET}-${CONFIG}-${FLAVOR}
+# Assuming there is only one patch release for a given minor version
+DISTRIB=$(
+    curl -s $API_URL |
+    jq -r '.assets[].name' |
+    grep -v 'sha256' |
+    grep "${PYTHON_RUNTIME_MINOR}.*+${PYTHON_BUILD_VERSION}-${TARGET}-${CONFIG}-${FLAVOR}"
+)
 
-wget https://github.com/indygreg/python-build-standalone/releases/download/${PYTHON_BUILD_VERSION}/${DISTRIB}.tar.zst
-tar xvf ${DISTRIB}.tar.zst
+wget https://github.com/indygreg/python-build-standalone/releases/download/${PYTHON_BUILD_VERSION}/${DISTRIB}
+tar xvf ${DISTRIB}
 mv python/install /python
-rm -rf ${DISTRIB}.tar.zst python
+rm -rf ${DISTRIB} python

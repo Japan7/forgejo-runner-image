@@ -22,11 +22,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - python-version: 3.12.1 # renovate: indygreg-python
+          - python-minor: 3.12
             output-tags: |
               type=raw,value=latest
               type=raw,value=3.12
-          - python-version: 3.11.7 # renovate: indygreg-python
+          - python-minor: 3.11
             output-tags: |
               type=raw,value=3.11
 
@@ -87,7 +87,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            PYTHON_RUNTIME_VERSION=${{ matrix.python-version }}
+            PYTHON_RUNTIME_MINOR=${{ matrix.python-minor }}
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker

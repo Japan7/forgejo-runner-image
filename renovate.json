@@ -15,24 +15,5 @@
         "enabled": false
       }
     }
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": [".*\\.ya?ml$"],
-      "matchStrings": [
-        "(?<currentValue>\\S+) # renovate: indygreg-python(?: extractVersion=(?<extractVersion>\\S+))?"
-      ],
-      "depNameTemplate": "python",
-      "datasourceTemplate": "custom.indygreg-python"
-    }
-  ],
-  "customDatasources": {
-    "indygreg-python": {
-      "defaultRegistryUrlTemplate": "https://api.github.com/repos/indygreg/python-build-standalone/releases/latest",
-      "transformTemplates": [
-        "($matcher := /[^-]+-([^+]+)\\+([^-]+)/; {\"releases\": $map($.assets, function($v) { ($g := $matcher($v.name).groups; {\"version\": $g[0], \"digest\": $g[1]}) })})"
-      ]
-    }
-  }
+  ]
 }
