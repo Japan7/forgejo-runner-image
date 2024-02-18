@@ -2,7 +2,7 @@ ARG BASE_TAG=act-latest
 FROM catthehacker/ubuntu:${BASE_TAG}
 
 # python
-# renovate: datasource=docker depName=python
+# renovate: datasource=custom.setup-python depName=python extractVersion=^(?<version>\d+\.\d+)\.\d+$
 ARG PYTHON_VERSION=3.12
 COPY python.sh .
 RUN ./python.sh && rm python.sh

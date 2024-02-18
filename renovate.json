@@ -3,5 +3,13 @@
   "extends": [
     "github>Japan7/renovate-config",
     "github>Japan7/renovate-config:python"
-  ]
+  ],
+  "customDatasources": {
+    "setup-python": {
+      "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json",
+      "transformTemplates": [
+        "{\"releases\": $map($, function($v) { { \"version\": $v.version } }) }"
+      ]
+    }
+  }
 }
