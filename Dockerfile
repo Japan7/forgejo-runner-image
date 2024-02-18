@@ -1,4 +1,4 @@
-ARG BASE_TAG=act-latest
+ARG BASE_TAG=act-latest@sha256:efce7c01d75493a457c82c7394d2707119e30becb706ec1865e64c7c820a3c94
 FROM catthehacker/ubuntu:${BASE_TAG}
 
 # python
