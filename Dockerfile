@@ -33,7 +33,7 @@ RUN wget https://github.com/rclone/rclone/releases/download/${RCLONE_VERSION}/${
 
 # hugo
 # renovate: datasource=github-releases depName=gohugoio/hugo extractVersion=^v?(?<version>.*)$
-ARG HUGO_VERSION=0.122.0
+ARG HUGO_VERSION=0.123.0
 ENV HUGO_ARCHIVE=hugo_${HUGO_VERSION}_linux-${TARGETARCH}
 RUN wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_ARCHIVE}.tar.gz && \
     mkdir hugo_release && \
