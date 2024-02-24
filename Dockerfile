@@ -4,6 +4,9 @@ FROM catthehacker/ubuntu:${BASE_TAG}
 ARG TARGETARCH
 ARG PYTHON_RUNTIME_MINOR
 
+# Force pip to use gcc to compile wheels
+ENV CC=gcc
+
 # python
 # renovate: datasource=github-releases depName=indygreg/python-build-standalone
 ARG PYTHON_BUILD_VERSION=20240107
