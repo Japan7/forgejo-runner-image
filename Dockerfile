@@ -8,6 +8,9 @@ ARG PYTHON_RUNTIME_MINOR
 ENV CC=gcc
 # Limit the number of npm sockets
 ENV NPM_CONFIG_MAXSOCKETS=10
+# Increase pip/poetry timeout
+ENV PIP_REQUESTS_TIMEOUT=60
+ENV POETRY_REQUESTS_TIMEOUT=60
 
 # python
 # renovate: datasource=github-releases depName=indygreg/python-build-standalone
