@@ -6,6 +6,8 @@ ARG PYTHON_RUNTIME_MINOR
 
 # Force pip to use gcc to compile wheels
 ENV CC=gcc
+# Limit the number of npm sockets
+ENV NPM_CONFIG_MAXSOCKETS=10
 
 # python
 # renovate: datasource=github-releases depName=indygreg/python-build-standalone
