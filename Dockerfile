@@ -11,7 +11,7 @@ ENV NPM_CONFIG_MAXSOCKETS=10
 
 # python
 # renovate: datasource=github-releases depName=indygreg/python-build-standalone
-ARG PYTHON_BUILD_VERSION=20240107
+ARG PYTHON_BUILD_VERSION=20240224
 COPY python.sh .
 RUN ./python.sh && rm python.sh
 ENV PATH="/python/bin:$PATH"
