@@ -1,4 +1,4 @@
-ARG BASE_TAG=act-latest@sha256:28d51b66256606603e39d484d58275b9b3c41072ee10c87fb3a841dae7ac8ec4
+ARG BASE_TAG=act-latest
 FROM catthehacker/ubuntu:${BASE_TAG}
 
 ARG TARGETARCH
