@@ -26,7 +26,7 @@ RUN pip3 install --no-cache-dir "poetry==${POETRY_VERSION}"
 
 # yq
 # renovate: datasource=github-releases depName=mikefarah/yq
-ARG YQ_VERSION=v4.41.1
+ARG YQ_VERSION=v4.42.1
 RUN wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${TARGETARCH} -O /usr/bin/yq && \
     chmod +x /usr/bin/yq
 
