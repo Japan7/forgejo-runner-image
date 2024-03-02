@@ -21,7 +21,7 @@ ENV PATH="/python/bin:$PATH"
 
 # poetry
 # renovate: datasource=github-releases depName=python-poetry/poetry
-ARG POETRY_VERSION=1.8.1
+ARG POETRY_VERSION=1.8.2
 RUN pip3 install --no-cache-dir "poetry==${POETRY_VERSION}"
 
 # yq
