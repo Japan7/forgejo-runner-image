@@ -32,7 +32,7 @@ RUN wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linu
 
 # rclone
 # renovate: datasource=github-releases depName=rclone/rclone
-ARG RCLONE_VERSION=v1.65.2
+ARG RCLONE_VERSION=v1.66.0
 ENV RCLONE_ARCHIVE=rclone-${RCLONE_VERSION}-linux-${TARGETARCH}
 RUN wget https://github.com/rclone/rclone/releases/download/${RCLONE_VERSION}/${RCLONE_ARCHIVE}.zip && \
     unzip ${RCLONE_ARCHIVE}.zip && \
