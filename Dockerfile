@@ -14,7 +14,7 @@ ENV POETRY_REQUESTS_TIMEOUT=60
 
 # python
 # renovate: datasource=github-releases depName=indygreg/python-build-standalone
-ARG PYTHON_BUILD_VERSION=20240224
+ARG PYTHON_BUILD_VERSION=20240415
 COPY python.sh .
 RUN ./python.sh && rm python.sh
 ENV PATH="/python/bin:$PATH"
